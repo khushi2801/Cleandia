@@ -75,11 +75,11 @@ public class Notification extends Fragment {
         list = new ArrayList<>();
         list.add(new NotificationModel("25","Jun","Swachhta - Cleanliness drive","Prerna Foundation"));
         list.add(new NotificationModel("02","Jul" , "Lakshya Campaign" ,"SBA NGO"));
-        list.add(new NotificationModel("19","Jul" , "‘Say no to plastic’" ,"Ujjwala Sanstha"));
+        list.add(new NotificationModel("19","Jul" , "'Say no to plastic'" ,"Ujjwala Sanstha"));
         list.add(new NotificationModel("15","Aug" , "Swachhta Rally" ,"Bharat Foundation"));
         list.add(new NotificationModel("19", "Aug","Disposal of Household waste","Keshav NGO"));
         list.add(new NotificationModel("31", "Aug","Mission Clean Gujarat","Nirmala Foundation"));
-        list.add(new NotificationModel("2", "Sep","Nirmal Bharat Abhiyaan","Jyoti NGO"));
+        list.add(new NotificationModel("02", "Sep","Nirmal Bharat Abhiyaan","Jyoti NGO"));
 
         RecyclerView Recycler = view.findViewById(R.id.notification_recycler);
         adapter = new NotificationAdapter(list, getActivity());
