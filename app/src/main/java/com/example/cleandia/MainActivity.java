@@ -1,17 +1,11 @@
 package com.example.cleandia;
 
-import static androidx.navigation.fragment.NavHostFragment.findNavController;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -40,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             startActivity(new Intent(MainActivity.this, Login.class));
         }
         return super.onOptionsItemSelected(item);
-
     }
 
     Home homeFragment = new Home();
@@ -54,11 +47,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
                 return true;
-
             case R.id.complaint:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, complaintFragment).commit();
                 return true;
-
             case R.id.notification:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, notificationFragment).commit();
                 return true;

@@ -42,5 +42,6 @@
             android:layout_height="wrap_content"
             android:isScrollContainer="true"
             tools:listitem="@layout/sample_information" />
+
     </LinearLayout>
 </FrameLayout>

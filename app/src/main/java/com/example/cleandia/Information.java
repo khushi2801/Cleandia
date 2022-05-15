@@ -4,20 +4,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
-
 import java.util.ArrayList;
-
 import adapters.InformationAdapter;
-import adapters.NotificationAdapter;
 import models.InformationModel;
-import models.NotificationModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,8 +18,7 @@ import models.NotificationModel;
  * create an instance of this fragment.
  */
 public class Information extends Fragment {
-
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    //The fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -35,7 +27,7 @@ public class Information extends Fragment {
     InformationAdapter adapter;
     ArrayList<InformationModel> list;
     public Information() {
-        // Required empty public constructor
+        //Required empty public constructor
     }
 
     /**
@@ -69,7 +61,7 @@ public class Information extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_information, container, false);
-        // Inflate the layout for this fragment
+        //Inflate the layout for this fragment
         list = new ArrayList<>();
         list.add(new InformationModel("Agricultural", R.drawable.agricultural));
         list.add(new InformationModel("Chemical", R.drawable.chemical));
@@ -79,7 +71,6 @@ public class Information extends Fragment {
         list.add(new InformationModel("Medical", R.drawable.medical));
         list.add(new InformationModel("Sewage", R.drawable.sewage));
         list.add(new InformationModel("Industrial", R.drawable.industrial));
-        list.add(new InformationModel("Radioactive", R.drawable.radioactive));
 
         RecyclerView Recycler = view.findViewById(R.id.waste_recycler);
         adapter = new InformationAdapter(list, getActivity());

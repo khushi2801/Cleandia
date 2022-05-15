@@ -8,10 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -34,7 +32,6 @@ public class SignUp extends AppCompatActivity {
         signupBtn = (Button) findViewById(R.id.signupBtn);
         fAuth = FirebaseAuth.getInstance();
         loginLink = findViewById(R.id.loginLink);
-
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

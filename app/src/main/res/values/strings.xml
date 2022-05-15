@@ -49,8 +49,10 @@
     <string name="contact_no">+91 0000000000</string>
     <string name="register">Register</string>
     <string name="waste">Waste</string>
-    <string name="waste_type">waste_type</string>
-    <string name="types_content">types content</string>
+    <string name="waste_type">Waste Type</string>
     <string name="disposal_method">Disposal Method</string>
-    <string name="disposal_content">disposal content</string>
+    <string name="disposal_content">Disposal Content</string>
+    <string name="waste_info">Waste Info</string>
+    <string name="your_name">Your name</string>
+    <string name="or_with">Or with</string>
 </resources>

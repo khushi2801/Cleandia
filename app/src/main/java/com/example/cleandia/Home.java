@@ -1,20 +1,14 @@
 package com.example.cleandia;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.ArrayList;
-
-import adapters.NotificationAdapter;
 import adapters.PostAdapter;
-import models.NotificationModel;
 import models.PostModel;
 
 /**
@@ -23,8 +17,7 @@ import models.PostModel;
  * create an instance of this fragment.
  */
 public class Home extends Fragment {
-
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    //The fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -34,7 +27,7 @@ public class Home extends Fragment {
     ArrayList<PostModel> list;
 
     public Home() {
-        // Required empty public constructor
+        //Required empty public constructor
     }
 
     /**
@@ -67,7 +60,7 @@ public class Home extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
-        // Inflate the layout for this fragment
+        //Inflate the layout for this fragment
         list = new ArrayList<>();
         list.add(new PostModel(R.drawable.post1,"Isha Joshi","2","Tejas society, Shashtrinagar ","77"));
         list.add(new PostModel(R.drawable.post2,"Siddharth Shah" , "3" ,"Narolgam, Ahmedabad","45"));

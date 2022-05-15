@@ -129,5 +129,6 @@
             android:layout_weight="2"
             android:text="@string/create_account"
             android:textSize="16sp" />
+
     </LinearLayout>
 </LinearLayout>

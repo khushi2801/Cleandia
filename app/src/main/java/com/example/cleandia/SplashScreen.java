@@ -3,7 +3,6 @@ package com.example.cleandia;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
-
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -24,12 +23,8 @@ public class SplashScreen extends AppCompatActivity {
 
         Thread thread = new Thread(){
             public void run(){
-                try {
-                    sleep(2000);
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
+                try { sleep(2000); }
+                catch (Exception e){ e.printStackTrace(); }
                 finally {
                     if(fAuth.getCurrentUser() != null){
                         startActivity( new Intent(SplashScreen.this,MainActivity.class));
@@ -41,6 +36,5 @@ public class SplashScreen extends AppCompatActivity {
             }
         };
         thread.start();
-
     }
 }

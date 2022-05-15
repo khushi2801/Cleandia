@@ -1,7 +1,6 @@
 package com.example.cleandia;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,7 +27,6 @@ public class NotificationDetail extends AppCompatActivity {
 
             ngoName.setText(ngo_name);
             eventName.setText(event_name);
-
             registerBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

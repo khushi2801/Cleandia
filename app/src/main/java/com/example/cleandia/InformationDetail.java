@@ -1,11 +1,8 @@
 package com.example.cleandia;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,13 +13,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class InformationDetail extends AppCompatActivity {
-    //creating a variable for our Firebase Database.
+    //Creating a variable for our Firebase Database.
     FirebaseDatabase firebaseDatabase;
+    //Creating a variable for our Database Reference for Firebase.
+    DatabaseReference databaseReference, childReference;
 
-    //creating a variable for our Database Reference for Firebase.
-    DatabaseReference databaseReference;
-
-    TextView wasteType, title1, content1, title2, content2;
+    TextView wasteType, disposalTitle, disposalMethod, info, wasteInfo;
     ImageView image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,65 +27,87 @@ public class InformationDetail extends AppCompatActivity {
 
         wasteType = findViewById(R.id.wasteType);
         image = findViewById(R.id.waste_image_detail);
-        title1 = findViewById(R.id.title1);
-        content1 = findViewById(R.id.content1);
-        title2 = findViewById(R.id.title2);
-        content2 = findViewById(R.id.content2);
-
-        //get the instance of our Firebase database.
-        firebaseDatabase = FirebaseDatabase.getInstance();
-
-        //get reference for our database.
-        databaseReference = firebaseDatabase.getReference("Data");
-
-//        // initializing our object class variable.
-//        retrieveTV = findViewById(R.id.idTVRetrieveData);
-//
-//        // calling method
-//        // for getting data.
-//        getdata();
+        info = findViewById(R.id.waste);
+        wasteInfo = findViewById(R.id.waste_info);
+        disposalTitle = findViewById(R.id.disposal);
+        disposalMethod = findViewById(R.id.disposal_method);
 
         if(getIntent().getIntExtra("type",0) == 1) {
 
             final String waste_type = getIntent().getStringExtra("waste type");
             final int waste_image = getIntent().getIntExtra("image",0);
-            wasteType.setText(waste_type);
+
+            wasteType.setText(String.format("%s Waste", waste_type));
             image.setImageResource(waste_image);
-            getData();
-
-//            String para = "Disposal of agricultural waste, is, in many cases similar to regular waste disposal methods. As in, solid materials are often sent to landfills or incinerators. However, this can obviously have a negative effect on the planet – something which those who work within agriculture are likely to be particularly passionate about. In fact, the future of farming relies on taking care of the planet. Fortunately, there are other methods of agricultural waste disposal, such as composting and recycling which can be implemented to help protect the environment.\n" +
-//                    "\n" +
-//                    "For example, organic fertilizers can be used again and again, and animal waste (faeces) can be used in composting. Both of which will allow agricultural land to thrive.";
-//
-//            switch (waste_type){
-//                case "Agricultural":
-//                    content.setText(para);
-
-
-            //}
+            info.setText(String.format("What is %s Waste?", waste_type));
+            disposalTitle.setText(String.format("How to dispose %s Waste?", waste_type));
+            getData(waste_type);
         }
-
     }
 
-    private void getData() {
+    private void getData(String waste_type) {
+        //Get the instance of our Firebase database.
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        //Get reference for our database.
+        databaseReference = firebaseDatabase.getReference("data");
 
-        // calling add value event listener method for getting the values from database.
+        //Calling add value event listener method for getting the values from database.
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // this method is call to get the realtime updates in the data.
-                // this method is called when the data is changed in our Firebase console.
-                String value = snapshot.getValue(String.class);
+                String value1, value2;
+                //This method is call to get the realtime updates in the data.
+                //This method is called when the data is changed in our Firebase console.
+                switch (waste_type){
+                case "Agricultural":
+                    value1 = snapshot.child("content1").child("agricultural").getValue(String.class);
+                    value2 = snapshot.child("content2").child("agricultural").getValue(String.class);
+                    break;
+                case "Chemical":
+                    value1 = snapshot.child("content1").child("chemical").getValue(String.class);
+                    value2 = snapshot.child("content2").child("chemical").getValue(String.class);
+                    break;
+                case "Electronic":
+                    value1 = snapshot.child("content1").child("electronic").getValue(String.class);
+                    value2 = snapshot.child("content2").child("electronic").getValue(String.class);
+                    break;
+                case "Liquid":
+                    value1 = snapshot.child("content1").child("liquid").getValue(String.class);
+                    value2 = snapshot.child("content2").child("liquid").getValue(String.class);
+                    break;
+                case "Kitchen":
+                    value1 = snapshot.child("content1").child("kitchen").getValue(String.class);
+                    value2 = snapshot.child("content2").child("kitchen").getValue(String.class);
+                    break;
+                case "Medical":
+                    value1 = snapshot.child("content1").child("medical").getValue(String.class);
+                    value2 = snapshot.child("content2").child("medical").getValue(String.class);
+                    break;
+                case "Sewage":
+                    value1 = snapshot.child("content1").child("sewage").getValue(String.class);
+                    value2 = snapshot.child("content2").child("sewage").getValue(String.class);
+                    break;
+                case "Industrial":
+                    value1 = snapshot.child("content1").child("industrial").getValue(String.class);
+                    value2 = snapshot.child("content2").child("industrial").getValue(String.class);
+                    break;
+                case "Radioactive":
+                    value1 = snapshot.child("content1").child("radioactive").getValue(String.class);
+                    value2 = snapshot.child("content2").child("radioactive").getValue(String.class);
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + waste_type);
+                }
 
-                // after getting the value we are setting our value to our text view in below line.
-                content2.setText(value);
+                //Setting value to text view
+                wasteInfo.setText(value1);
+                disposalMethod.setText(value2);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // calling on cancelled method when we receive
-                // any error or we are not able to get the data.
-                Toast.makeText(InformationDetail.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
+                //Calling on cancelled method when we receive any error or we are not able to get the data.
+                Toast.makeText(InformationDetail.this, "Failed to get data.", Toast.LENGTH_SHORT).show();
             }
         });
     }

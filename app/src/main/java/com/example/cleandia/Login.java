@@ -12,17 +12,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
 
 public class Login extends AppCompatActivity {
 
@@ -42,13 +39,11 @@ public class Login extends AppCompatActivity {
         signUpLink = findViewById(R.id.signupLink);
         forgotPwd = findViewById(R.id.forgotPwd);
         fAuth = FirebaseAuth.getInstance();
-
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String mail = loginEmail.getText().toString().trim();
                 String password = loginPassword.getText().toString().trim();
-
                 fAuth.signInWithEmailAndPassword(mail,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -69,7 +64,6 @@ public class Login extends AppCompatActivity {
                 showRecoverPasswordDialog();
             }
         });
-
         signUpLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,14 +78,13 @@ public class Login extends AppCompatActivity {
         LinearLayout linearLayout=new LinearLayout(this);
         final EditText new_email= new EditText(this);
 
-        // write the email using which you registered
+        //Write the email using which you registered
         new_email.setHint("Enter email");
         new_email.setMinEms(16);
         new_email.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         linearLayout.addView(new_email);
         linearLayout.setPadding(10,10,10,10);
         builder.setView(linearLayout);
-
 
         builder.setPositiveButton("Reset password", new DialogInterface.OnClickListener() {
             @Override
@@ -117,17 +110,14 @@ public class Login extends AppCompatActivity {
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
-        // calling sendPasswordResetEmail
-        // open your email and write the new
-        // password and then you can login
+        //Calling sendPasswordResetEmail open your email and write the new password and then you can login
         fAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 loadingBar.dismiss();
                 if(task.isSuccessful())
                 {
-                    // if isSuccessful then done message will be shown
-                    // and you can change the password
+                    //If isSuccessful then done message will be shown and you can change the password
                     Toast.makeText(Login.this,"Done sent",Toast.LENGTH_LONG).show();
                 }
                 else {
@@ -142,6 +132,4 @@ public class Login extends AppCompatActivity {
             }
         });
     }
-
-
 }

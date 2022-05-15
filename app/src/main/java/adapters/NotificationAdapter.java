@@ -5,18 +5,12 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.cleandia.InformationDetail;
 import com.example.cleandia.NotificationDetail;
 import com.example.cleandia.R;
-
 import java.util.ArrayList;
-
 import models.NotificationModel;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.viewHolder> {
