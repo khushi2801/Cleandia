@@ -11,13 +11,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cleandia.InformationDetail;
 import com.example.cleandia.NotificationDetail;
 import com.example.cleandia.R;
 
 import java.util.ArrayList;
 
 import models.NotificationModel;
-
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.viewHolder> {
     ArrayList<NotificationModel> list ;
@@ -44,7 +44,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         holder.event_month.setText(model.getEventMonth());
         holder.event_name.setText(model.getEventName());
         holder.ngo_name.setText(model.getNgoName());
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +52,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                 intent.putExtra("event name",model.getEventName());
                 intent.putExtra("type",1);
                 context.startActivity(intent);
-
             }
         });
     }
@@ -64,7 +62,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {
-        TextView event_date,event_month,event_name , ngo_name ;
+        TextView event_date, event_month, event_name, ngo_name ;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);

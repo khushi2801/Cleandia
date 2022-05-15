@@ -18,13 +18,14 @@ public class NotificationDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_detail);
         registerBtn = findViewById(R.id.eventRegister);
-        ngoName = findViewById(R.id.ngo);
+        ngoName = findViewById(R.id.ngo_name);
         eventName = findViewById(R.id.event);
 
         if(getIntent().getIntExtra("type",0) == 1) {
 
             final String ngo_name = getIntent().getStringExtra("ngo name");
             final String event_name = getIntent().getStringExtra("event name");
+
             ngoName.setText(ngo_name);
             eventName.setText(event_name);
 

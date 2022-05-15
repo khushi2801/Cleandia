@@ -13,7 +13,8 @@
         android:backgroundTint="#FFFFFF"
         android:clickable="true"
         app:cardCornerRadius="5dp"
-        app:cardElevation="5dp">
+        app:cardElevation="5dp"
+        android:focusable="true">
 
         <RelativeLayout
             android:layout_width="match_parent"

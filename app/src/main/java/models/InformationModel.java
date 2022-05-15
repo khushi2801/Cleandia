@@ -12,15 +12,10 @@ public class InformationModel {
     public String getWasteName() {
         return wasteName;
     }
-
+    public void setWasteName(String wasteName) {this.wasteName = wasteName;}
     public int getImageId() {
         return imageId;
     }
-
-    public void setWasteName(String wasteName) {
-        this.wasteName = wasteName;
-    }
-
     public void setImageId(int imageId) {
         this.imageId = imageId;
     }
